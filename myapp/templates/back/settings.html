@@ -1,0 +1,86 @@
+{% extends "back/master.html" %}
+{% load static %}
+
+{% block headblock %}
+    <script src= "{% static 'ckeditor/ckeditor.js' %}"></script>
+{% endblock %}
+
+{% block mainblock %}
+    
+
+    <div class="block full">
+        <div class="block-title">
+            <h2><strong>Site</strong>Settings</h2>
+        </div>
+        <div class="table-responsive"></div>
+        <form action="{% url 'site_settings' %}" enctype="multipart/form-data" method="post" class="form-group">
+            {% csrf_token %}
+            <div class="form-group">
+                <label>Title</label>
+                <input type="text" id="title" name="title" value="{{site.title}}" class="form-control"  placeholder="Title  ">
+            </div>
+
+            <div class="form-group">
+                <label>Body</label>
+                <input type="text" id="body" name="body" value="{{site.body}}" class="form-control" placeholder="Body">
+            </div>
+
+            <div class="form-group">
+                <label>Facebook</label>
+                <input type="text" id="fb" name="fb" value="{{site.fb}}" class="form-control" placeholder="Facebook Link">
+            </div>
+
+            <div class="form-group">
+                <label>Twitter</label>
+                <input type="text" id="tw" name="tw" value="{{site.tw}}" class="form-control" placeholder="Twitter URL">
+            </div>
+
+            <div class="form-group">
+                <label>Youtube</label>
+                <input type="text" id="yt" name="yt" value="{{site.yt}}" class="form-control" placeholder="Youtube Channel">
+            </div>
+
+            <div class="form-group">
+                <label>Phone No</label>
+                <input type="text" id="ph" name="ph" value="{{site.ph}}" class="form-control" placeholder="Your Cell Ph Number">
+            </div>
+
+
+            <div class="form-group">
+                <input type="file" id= "myfiles" name="myfiles" value="{{site.picurl}}" rows="5" class="form-control" placeholder="Body Text" />
+            </div>
+
+            <div class="form-group">
+                <img style="..." src={{site.picurl}} height="250" width="250" > 
+            </div>
+
+            <div class="form-group">
+                <input type="file" id= "myfiles2" name="myfiles2" value="{{site.picurl2}}" rows="5" class="form-control" placeholder="Body Text" />
+            </div>
+
+            <div class="form-group">
+                <img style="..." src={{site.picurl2}} height="250" width="250" > 
+            </div>
+
+
+
+            
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Save</button>
+            </div>
+               
+        </form>
+    </div>
+ 
+ 
+ 
+{% endblock %}
+ 
+  
+ 
+{% block footerblock %}
+    <!-- Load and execute javascript code used only in this page -->
+    <script src="{% static "back/js/pages/tablesDatatables.js" %}"></script>
+    <script>$(function(){ TablesDatatables.init(); });</script>
+{% endblock %}
+ 
